@@ -1,8 +1,8 @@
 {
   "name": "清溝國小 英文拼字挑戰",
-  "short_name": "拼字挑戰",
+  "short_name": "單字超人",
   "description": "清溝國小英文單字自然拼讀練習APP",
-  "start_url": "/index.html",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#0d1117",
   "theme_color": "#161b22",
