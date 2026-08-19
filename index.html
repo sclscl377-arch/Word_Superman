@@ -407,9 +407,10 @@
     <div>
         <label>範圍:</label>
         <select id="filter-grade" onchange="updateWeekOptions()">
-            <option value="all">全部 (3+4下)</option>
+            <option value="all">全部 (3下+4下+5上)</option>
             <option value="3下">3下</option>
             <option value="4下">4下</option>
+            <option value="5上">5上</option>
         </select>
     </div>
     <div>
@@ -1438,6 +1439,167 @@ const phonicsData = {
     "supermarket":{ rule:"規則3｜CV開音節 u=/juː/ + 規則12｜R控母音 er/ar（多音節）", parts:[{l:"s",t:"c"},{l:"u",t:"lv"},{l:"p",t:"c"},{l:"er",t:"rc"},{l:"m",t:"c"},{l:"ar",t:"rc"},{l:"k",t:"c"},{l:"et",t:"sv"}], zh:"ㄙ + ㄩ + ㄆ + ㄜr + ㄇ + ㄝr + ㄎ + ㄝ + ㄊ", type:"M", note:"複合字 super+market。【規則3】su- 開音節，u 念長音 /juː/（ㄩ）。【規則12】er 和 ar 都念 R 控母音。四個音節：su-per-mar-ket。" },
     "station":    { rule:"規則3｜CV開音節 a=/eɪ/ + 規則24｜-tion=/ʃən/", parts:[{l:"st",t:"bl"},{l:"a",t:"lv"},{l:"tion",t:"sp"}], zh:"ㄙㄊ + ㄟ + ㄒ + ㄣ", type:"M", note:"【規則18】st 子音群。【規則3】sta- 是開音節，a 念長音 /eɪ/（ㄟ）。【規則24】-tion 念 /ʃən/（ㄒㄣ）。兩個音節：sta-tion。" },
     "stadium":    { rule:"規則3｜CV開音節 a=/eɪ/（多音節）", parts:[{l:"st",t:"bl"},{l:"a",t:"lv"},{l:"d",t:"c"},{l:"i",t:"lv"},{l:"um",t:"c"}], zh:"ㄙㄊ + ㄟ + ㄉ + ㄧ + ㄝ + ㄇ", type:"M", note:"【規則18】st 子音群。【規則3】sta- 是開音節，a 念長音 /eɪ/（ㄟ）。三個音節：sta-di-um。" }
+,
+    // ---- 5上 (新增) ----
+    "go": { rule:"規則3｜CV開音節 o=/oʊ/", parts:[{l:"g",t:"c"},{l:"o",t:"lv"}], zh:"ㄍ + ㄡ", type:"R", note:"【規則3】單音節「子音+母音」結尾（開音節），母音念自己的名字，長音 /oʊ/（ㄡ）。" },
+    "all": { rule:"規則42｜all=/ɔːl/ 固定組合", parts:[{l:"a",t:"sv"},{l:"ll",t:"c"}], zh:"ㄛ + ㄌ", type:"I", note:"【規則42】all 是固定組合，念 /ɔːl/（圓唇ㄛ+ㄌ）。同類：ball, call, tall，直接背。" },
+    "ant": { rule:"規則1｜短母音 a /æ/", parts:[{l:"a",t:"sv"},{l:"nt",t:"c"}], zh:"ㄝ(短) + ㄋㄊ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/，嘴巴張到最大。" },
+    "arm": { rule:"規則12｜R控母音 ar=/ɑːr/", parts:[{l:"ar",t:"rc"},{l:"m",t:"c"}], zh:"ㄚr + ㄇ", type:"R", note:"【規則12】ar 念 R 控母音 /ɑːr/（捲舌ㄚ），母音受 r 控制。" },
+    "ask": { rule:"規則1｜短母音 a /æ/", parts:[{l:"a",t:"sv"},{l:"sk",t:"c"}], zh:"ㄝ(短) + ㄙㄎ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/。sk 是字尾子音群，兩音分開念。" },
+    "a.m.": { rule:"規則42｜字母縮寫直接唸字母音", parts:[{l:"a",t:"sl"},{l:"m",t:"sl"}], zh:"ㄟ + ㄝㄇ", type:"I", note:"【規則42】縮寫詞，直接唸字母名稱 /eɪ ɛm/，不套拼讀規則，需直接背。" },
+    "as": { rule:"規則1｜短母音 a /æ/", parts:[{l:"a",t:"sv"},{l:"s",t:"c"}], zh:"ㄝ(短) + ㄗ", type:"R", note:"【規則1】a 念短音 /æ/。字尾 s 在此念濁音 /z/（ㄗ）。" },
+    "at": { rule:"規則1｜短母音 a /æ/", parts:[{l:"a",t:"sv"},{l:"t",t:"c"}], zh:"ㄝ(短) + ㄊ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/，是最基本的 CVC 短母音字。" },
+    "bag": { rule:"規則1｜短母音 a /æ/", parts:[{l:"b",t:"c"},{l:"a",t:"sv"},{l:"g",t:"c"}], zh:"ㄅ + ㄝ(短) + ㄍ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/，嘴巴張到最大。" },
+    "bus": { rule:"規則1｜短母音 u /ʌ/", parts:[{l:"b",t:"c"},{l:"u",t:"sv"},{l:"s",t:"c"}], zh:"ㄅ + ㄚ(短) + ㄙ", type:"R", note:"【規則1】u 被子音夾住→念短音 /ʌ/（接近ㄚ），嘴巴放鬆張開。" },
+    "buy": { rule:"規則42｜uy=/aɪ/ 不規則", parts:[{l:"b",t:"c"},{l:"uy",t:"sl"}], zh:"ㄅ + ㄞ", type:"I", note:"【規則42】uy 組合在此念 /aɪ/（ㄞ），屬不規則拼法，直接背。" },
+    "cat": { rule:"規則1｜短母音 a /æ/", parts:[{l:"c",t:"c"},{l:"a",t:"sv"},{l:"t",t:"c"}], zh:"ㄎ + ㄝ(短) + ㄊ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/，最經典的 CVC 短母音字。" },
+    "cry": { rule:"規則9｜字尾 y=/aɪ/（單音節）", parts:[{l:"cr",t:"bl"},{l:"y",t:"lv"}], zh:"ㄎㄖ + ㄞ", type:"R", note:"【規則18】cr 子音群連念。【規則9】單音節字尾 y 念長音 /aɪ/（ㄞ），不同於多音節字尾 y 念 /iː/。" },
+    "act": { rule:"規則1｜短母音 a /æ/", parts:[{l:"a",t:"sv"},{l:"ct",t:"c"}], zh:"ㄝ(短) + ㄎㄊ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/。ct 是字尾子音群，兩音都要念清楚。" },
+    "add": { rule:"規則1｜短母音 a + 規則22｜雙寫dd", parts:[{l:"a",t:"sv"},{l:"dd",t:"c"}], zh:"ㄝ(短) + ㄉ", type:"R", note:"【規則1】a 念短音 /æ/。【規則22】雙寫子音只發一個音，讓前面母音保持短音。" },
+    "age": { rule:"規則4｜魔法E a_e → /eɪ/", parts:[{l:"a",t:"lv"},{l:"g",t:"c"},{l:"e",t:"sl"}], zh:"ㄝ + ㄐ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 a 念長音 /eɪ/（ㄟ→在此因g軟化略帶ㄝ）。g 在 e 前念軟音 /dʒ/（ㄐ）。" },
+    "cup": { rule:"規則1｜短母音 u /ʌ/", parts:[{l:"c",t:"c"},{l:"u",t:"sv"},{l:"p",t:"c"}], zh:"ㄎ + ㄚ(短) + ㄆ", type:"R", note:"【規則1】u 被子音夾住→念短音 /ʌ/（接近ㄚ）。" },
+    "dry": { rule:"規則9｜字尾 y=/aɪ/（單音節）", parts:[{l:"dr",t:"bl"},{l:"y",t:"lv"}], zh:"ㄉㄖ + ㄞ", type:"R", note:"【規則18】dr 子音群連念。【規則9】單音節字尾 y 念長音 /aɪ/（ㄞ）。" },
+    "eat": { rule:"規則7｜母音組合 ea → /iː/", parts:[{l:"ea",t:"lv"},{l:"t",t:"c"}], zh:"ㄧ(長) + ㄊ", type:"R", note:"【規則7】ea 兩母音連在一起→前面的 e 說話，念長音 /iː/（ㄧ）。" },
+    "elf": { rule:"規則1｜短母音 e /ɛ/", parts:[{l:"e",t:"sv"},{l:"lf",t:"c"}], zh:"ㄝ(短) + ㄌㄈ", type:"R", note:"【規則1】e 被子音夾住→念短音 /ɛ/。lf 是字尾子音群。" },
+    "fan": { rule:"規則1｜短母音 a /æ/", parts:[{l:"f",t:"c"},{l:"a",t:"sv"},{l:"n",t:"c"}], zh:"ㄈ + ㄝ(短) + ㄋ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/，嘴巴張到最大。" },
+    "ago": { rule:"規則3｜CV開音節 o=/oʊ/（多音節）", parts:[{l:"a",t:"sv"},{l:"g",t:"c"},{l:"o",t:"lv"}], zh:"ㄝ + ㄍ + ㄡ", type:"M", note:"第一音節 a 念弱化輕聲 /ə/，第二音節 go 是開音節，o 念長音 /oʊ/（ㄡ）。兩個音節：a-go。" },
+    "air": { rule:"規則12｜R控母音 air=/ɛr/", parts:[{l:"air",t:"rc"}], zh:"ㄝr", type:"R", note:"【規則12】air 組合念 R 控母音 /ɛr/（接近ㄝ加捲舌）。" },
+    "and": { rule:"規則1｜短母音 a /æ/", parts:[{l:"a",t:"sv"},{l:"nd",t:"c"}], zh:"ㄝ(短) + ㄋㄉ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/。nd 是字尾子音群。" },
+    "fax": { rule:"規則1｜短母音 a /æ/", parts:[{l:"f",t:"c"},{l:"a",t:"sv"},{l:"x",t:"c"}], zh:"ㄈ + ㄝ(短) + ㄎㄙ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/。x 念 /ks/（ㄎㄙ）。" },
+    "his": { rule:"規則1｜短母音 i /ɪ/", parts:[{l:"h",t:"c"},{l:"i",t:"sv"},{l:"s",t:"c"}], zh:"ㄏ + ㄝ(短) + ㄗ", type:"R", note:"【規則1】i 被子音夾住→念短音 /ɪ/。字尾 s 在此念濁音 /z/（ㄗ）。" },
+    "her": { rule:"規則12｜R控母音 er=/ɜːr/", parts:[{l:"h",t:"c"},{l:"er",t:"rc"}], zh:"ㄏ + ㄜr", type:"R", note:"【規則12】er 念 R 控母音 /ɜːr/（捲舌ㄜ）。" },
+    "hot": { rule:"規則1｜短母音 o /ɒ/", parts:[{l:"h",t:"c"},{l:"o",t:"sv"},{l:"t",t:"c"}], zh:"ㄏ + ㄛ(短) + ㄊ", type:"R", note:"【規則1】o 被子音夾住→念短音 /ɒ/，嘴巴呈圓形快速念完。" },
+    "jog": { rule:"規則1｜短母音 o /ɒ/", parts:[{l:"j",t:"c"},{l:"o",t:"sv"},{l:"g",t:"c"}], zh:"ㄐ + ㄛ(短) + ㄍ", type:"R", note:"【規則1】o 被子音夾住→念短音 /ɒ/，嘴巴呈圓形快速念完。" },
+    "any": { rule:"規則1｜短母音 e + 規則9｜字尾y", parts:[{l:"a",t:"sv"},{l:"n",t:"c"},{l:"y",t:"lv"}], zh:"ㄝ(短) + ㄋ + ㄧ", type:"M", note:"【規則42】a 在此不規則念 /ɛ/（ㄝ），不是一般的 /æ/。【規則9】多音節字尾 y 念 /iː/（ㄧ）。兩個音節：an-y。" },
+    "art": { rule:"規則12｜R控母音 ar=/ɑːr/", parts:[{l:"ar",t:"rc"},{l:"t",t:"c"}], zh:"ㄚr + ㄊ", type:"R", note:"【規則12】ar 念 R 控母音 /ɑːr/（捲舌ㄚ），母音受 r 控制。" },
+    "by": { rule:"規則9｜字尾 y=/aɪ/（單音節）", parts:[{l:"b",t:"c"},{l:"y",t:"lv"}], zh:"ㄅ + ㄞ", type:"R", note:"【規則9】單音節字尾 y 念長音 /aɪ/（ㄞ），如同 my, fly, cry。" },
+    "leg": { rule:"規則1｜短母音 e /ɛ/", parts:[{l:"l",t:"c"},{l:"e",t:"sv"},{l:"g",t:"c"}], zh:"ㄌ + ㄝ(短) + ㄍ", type:"R", note:"【規則1】e 被子音夾住→念短音 /ɛ/。" },
+    "new": { rule:"規則7｜母音組合 ew → /uː/", parts:[{l:"n",t:"c"},{l:"ew",t:"lv"}], zh:"ㄋ + ㄧㄨ", type:"R", note:"【規則7】ew 兩母音連在一起，念長音 /juː/（ㄧㄨ，實際發音像 you）。" },
+    "old": { rule:"規則2｜長母音 o /oʊ/（-old特殊模式）", parts:[{l:"o",t:"lv"},{l:"ld",t:"c"}], zh:"ㄡ + ㄌㄉ", type:"S", note:"【規則2】-old 字尾時 o 念長音 /oʊ/（ㄡ），這是 -old 特殊模式，同類：cold, gold, hold。" },
+    "pet": { rule:"規則1｜短母音 e /ɛ/", parts:[{l:"p",t:"c"},{l:"e",t:"sv"},{l:"t",t:"c"}], zh:"ㄆ + ㄝ(短) + ㄊ", type:"R", note:"【規則1】e 被子音夾住→念短音 /ɛ/。" },
+    "run": { rule:"規則1｜短母音 u /ʌ/", parts:[{l:"r",t:"c"},{l:"u",t:"sv"},{l:"n",t:"c"}], zh:"ㄖ + ㄚ(短) + ㄋ", type:"R", note:"【規則1】u 被子音夾住→念短音 /ʌ/（接近ㄚ）。" },
+    "bad": { rule:"規則1｜短母音 a /æ/", parts:[{l:"b",t:"c"},{l:"a",t:"sv"},{l:"d",t:"c"}], zh:"ㄅ + ㄝ(短) + ㄉ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/，嘴巴張到最大。" },
+    "bar": { rule:"規則12｜R控母音 ar=/ɑːr/", parts:[{l:"b",t:"c"},{l:"ar",t:"rc"}], zh:"ㄅ + ㄚr", type:"R", note:"【規則12】ar 念 R 控母音 /ɑːr/（捲舌ㄚ）。" },
+    "bat": { rule:"規則1｜短母音 a /æ/", parts:[{l:"b",t:"c"},{l:"a",t:"sv"},{l:"t",t:"c"}], zh:"ㄅ + ㄝ(短) + ㄊ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/。" },
+    "red": { rule:"規則1｜短母音 e /ɛ/", parts:[{l:"r",t:"c"},{l:"e",t:"sv"},{l:"d",t:"c"}], zh:"ㄖ + ㄝ(短) + ㄉ", type:"R", note:"【規則1】e 被子音夾住→念短音 /ɛ/。" },
+    "sad": { rule:"規則1｜短母音 a /æ/", parts:[{l:"s",t:"c"},{l:"a",t:"sv"},{l:"d",t:"c"}], zh:"ㄙ + ㄝ(短) + ㄉ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/。" },
+    "sea": { rule:"規則7｜母音組合 ea → /iː/", parts:[{l:"s",t:"c"},{l:"ea",t:"lv"}], zh:"ㄙ + ㄧ(長)", type:"R", note:"【規則7】ea 兩母音連在一起→前面的 e 說話，念長音 /iː/（ㄧ）。" },
+    "see": { rule:"規則7｜母音組合 ee → /iː/", parts:[{l:"s",t:"c"},{l:"ee",t:"lv"}], zh:"ㄙ + ㄧ(長)", type:"R", note:"【規則7】ee 兩母音連在一起→前面的 e 說話，念長音 /iː/（ㄧ），嘴角大幅拉開。" },
+    "shy": { rule:"規則17｜Digraph sh + 規則9｜字尾y", parts:[{l:"sh",t:"sp"},{l:"y",t:"lv"}], zh:"ㄒ + ㄞ", type:"R", note:"【規則17】sh 兩字母合成 /ʃ/（ㄒ）。【規則9】單音節字尾 y 念長音 /aɪ/（ㄞ）。" },
+    "bed": { rule:"規則1｜短母音 e /ɛ/", parts:[{l:"b",t:"c"},{l:"e",t:"sv"},{l:"d",t:"c"}], zh:"ㄅ + ㄝ(短) + ㄉ", type:"R", note:"【規則1】e 被子音夾住→念短音 /ɛ/。" },
+    "bee": { rule:"規則7｜母音組合 ee → /iː/", parts:[{l:"b",t:"c"},{l:"ee",t:"lv"}], zh:"ㄅ + ㄧ(長)", type:"R", note:"【規則7】ee 念長音 /iː/（ㄧ），嘴角大幅向兩側拉開，露出牙齒。" },
+    "big": { rule:"規則1｜短母音 i /ɪ/", parts:[{l:"b",t:"c"},{l:"i",t:"sv"},{l:"g",t:"c"}], zh:"ㄅ + ㄝ(短) + ㄍ", type:"R", note:"【規則1】i 被子音夾住→念短音 /ɪ/，嘴巴微微開，最放鬆。" },
+    "ten": { rule:"規則1｜短母音 e /ɛ/", parts:[{l:"t",t:"c"},{l:"e",t:"sv"},{l:"n",t:"c"}], zh:"ㄊ + ㄝ(短) + ㄋ", type:"R", note:"【規則1】e 被子音夾住→念短音 /ɛ/。" },
+    "two": { rule:"規則42｜tw+o，w靜音", parts:[{l:"tw",t:"sl"},{l:"o",t:"lv"}], zh:"ㄊ + ㄨ", type:"I", note:"【規則42】t 在 w 前為送氣音，w 幾乎不發音，o 念 /uː/（ㄨ）。屬不規則拼法，直接背。" },
+    "baby": { rule:"規則3｜CV開音節 a=/eɪ/ + 規則9｜字尾y（多音節）", parts:[{l:"b",t:"c"},{l:"a",t:"lv"},{l:"b",t:"c"},{l:"y",t:"lv"}], zh:"ㄅ + ㄟ + ㄅ + ㄧ", type:"M", note:"【規則3】ba- 是開音節，a 念長音 /eɪ/（ㄟ）。【規則9】多音節字尾 y 念 /iː/（ㄧ）。兩個音節：ba-by。" },
+    "bank": { rule:"規則1｜短母音 a + ank字尾", parts:[{l:"b",t:"c"},{l:"a",t:"sv"},{l:"nk",t:"c"}], zh:"ㄅ + ㄝ(短) + ㄥㄎ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/。nk 合唸成鼻音字尾 /ŋk/（ㄥㄎ）。" },
+    "bear": { rule:"規則12｜R控母音 ear=/ɛr/", parts:[{l:"b",t:"c"},{l:"ear",t:"rc"}], zh:"ㄅ + ㄝr", type:"S", note:"【規則12】ear 在此念 /ɛr/（接近ㄝ加捲舌），與 year 的 /ɪr/ 不同，需特別記。" },
+    "bit": { rule:"規則1｜短母音 i /ɪ/", parts:[{l:"b",t:"c"},{l:"i",t:"sv"},{l:"t",t:"c"}], zh:"ㄅ + ㄝ(短) + ㄊ", type:"R", note:"【規則1】i 被子音夾住→念短音 /ɪ/。" },
+    "bow": { rule:"規則8｜雙母音 ow=/aʊ/", parts:[{l:"b",t:"c"},{l:"ow",t:"dip"}], zh:"ㄅ + ㄠ", type:"S", note:"【規則8】ow 在此念雙母音 /aʊ/（ㄠ，如鞠躬時彎腰）。⚠️ 同拼法在 window 念 /oʊ/，需依字義判斷。" },
+    "box": { rule:"規則1｜短母音 o /ɒ/", parts:[{l:"b",t:"c"},{l:"o",t:"sv"},{l:"x",t:"c"}], zh:"ㄅ + ㄛ(短) + ㄎㄙ", type:"R", note:"【規則1】o 被子音夾住→念短音 /ɒ/。x 念 /ks/（ㄎㄙ）。" },
+    "beef": { rule:"規則7｜母音組合 ee → /iː/", parts:[{l:"b",t:"c"},{l:"ee",t:"lv"},{l:"f",t:"c"}], zh:"ㄅ + ㄧ(長) + ㄈ", type:"R", note:"【規則7】ee 念長音 /iː/（ㄧ），嘴角大幅拉開。" },
+    "belt": { rule:"規則1｜短母音 e /ɛ/", parts:[{l:"b",t:"c"},{l:"e",t:"sv"},{l:"lt",t:"c"}], zh:"ㄅ + ㄝ(短) + ㄌㄊ", type:"R", note:"【規則1】e 被子音夾住→念短音 /ɛ/。lt 是字尾子音群。" },
+    "bite": { rule:"規則4｜魔法E i_e → /aɪ/", parts:[{l:"b",t:"c"},{l:"i",t:"lv"},{l:"t",t:"c"},{l:"e",t:"sl"}], zh:"ㄅ + ㄞ + ㄊ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 i 念長音 /aɪ/（ㄞ）。模式：i + t + e。" },
+    "blue": { rule:"規則7｜母音組合 ue → /uː/", parts:[{l:"bl",t:"bl"},{l:"ue",t:"lv"}], zh:"ㄅㄌ + ㄨ", type:"R", note:"【規則18】bl 子音群連念。【規則7】ue 兩母音連在一起念長音 /uː/（ㄨ）。" },
+    "boat": { rule:"規則7｜母音組合 oa → /oʊ/", parts:[{l:"b",t:"c"},{l:"oa",t:"lv"},{l:"t",t:"c"}], zh:"ㄅ + ㄡ + ㄊ", type:"R", note:"【規則7】oa 兩母音連在一起→前面的 o 說話，念長音 /oʊ/（ㄡ）。" },
+    "boy": { rule:"規則8｜雙母音 oy=/ɔɪ/", parts:[{l:"b",t:"c"},{l:"oy",t:"dip"}], zh:"ㄅ + ㄛㄧ", type:"R", note:"【規則8】oy 用在字尾，念雙母音 /ɔɪ/（嘴型從圓ㄛ滑向ㄧ）。oi 用在字中間，oy 用在字尾。" },
+    "bug": { rule:"規則1｜短母音 u /ʌ/", parts:[{l:"b",t:"c"},{l:"u",t:"sv"},{l:"g",t:"c"}], zh:"ㄅ + ㄚ(短) + ㄍ", type:"R", note:"【規則1】u 被子音夾住→念短音 /ʌ/（接近ㄚ）。" },
+    "bun": { rule:"規則1｜短母音 u /ʌ/", parts:[{l:"b",t:"c"},{l:"u",t:"sv"},{l:"n",t:"c"}], zh:"ㄅ + ㄚ(短) + ㄋ", type:"R", note:"【規則1】u 被子音夾住→念短音 /ʌ/（接近ㄚ）。" },
+    "boss": { rule:"規則1｜短母音 o + 規則22｜雙寫ss", parts:[{l:"b",t:"c"},{l:"o",t:"sv"},{l:"ss",t:"c"}], zh:"ㄅ + ㄛ(短) + ㄙ", type:"R", note:"【規則1】o 念短音 /ɒ/（嘴圓形）。【規則22】ss 雙寫只發一個音。" },
+    "bowl": { rule:"規則8｜雙母音 ow=/oʊ/", parts:[{l:"b",t:"c"},{l:"ow",t:"lv"},{l:"l",t:"c"}], zh:"ㄅ + ㄡ + ㄌ", type:"S", note:"【規則8】ow 在此念長音 /oʊ/（ㄡ），與 bow（鞠躬）的雙母音念法不同，需依字義判斷。" },
+    "busy": { rule:"規則42｜u=/ɪ/ 不規則 + 規則9｜字尾y", parts:[{l:"b",t:"c"},{l:"u",t:"sv"},{l:"s",t:"c"},{l:"y",t:"lv"}], zh:"ㄅ + ㄧ(短) + ㄗ + ㄧ", type:"I", note:"【規則42】u 在此不規則念 /ɪ/（ㄧ），非一般的 /ʌ/，需直接背。【規則9】字尾 y 念 /iː/。兩音節：bus-y。" },
+    "cake": { rule:"規則4｜魔法E a_e → /eɪ/", parts:[{l:"c",t:"c"},{l:"a",t:"lv"},{l:"k",t:"c"},{l:"e",t:"sl"}], zh:"ㄎ + ㄟ + ㄎ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 a 念長音 /eɪ/（ㄟ）。模式：a + k + e。" },
+    "card": { rule:"規則12｜R控母音 ar=/ɑːr/", parts:[{l:"c",t:"c"},{l:"ar",t:"rc"},{l:"d",t:"c"}], zh:"ㄎ + ㄚr + ㄉ", type:"R", note:"【規則12】ar 念 R 控母音 /ɑːr/（捲舌ㄚ）。" },
+    "but": { rule:"規則1｜短母音 u /ʌ/", parts:[{l:"b",t:"c"},{l:"u",t:"sv"},{l:"t",t:"c"}], zh:"ㄅ + ㄚ(短) + ㄊ", type:"R", note:"【規則1】u 被子音夾住→念短音 /ʌ/（接近ㄚ）。" },
+    "can": { rule:"規則1｜短母音 a /æ/", parts:[{l:"c",t:"c"},{l:"a",t:"sv"},{l:"n",t:"c"}], zh:"ㄎ + ㄝ(短) + ㄋ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/，嘴巴張到最大。" },
+    "city": { rule:"規則1｜短母音 i + 規則5｜軟音c=/s/ + 規則9｜字尾y", parts:[{l:"c",t:"c"},{l:"i",t:"sv"},{l:"t",t:"c"},{l:"y",t:"lv"}], zh:"ㄙ + ㄧ(短) + ㄊ + ㄧ", type:"M", note:"【規則5】c 在 i 前念軟音 /s/（ㄙ）。第一音節 i 念短音 /ɪ/。【規則9】字尾 y 念 /iː/。兩音節：cit-y。" },
+    "coat": { rule:"規則7｜母音組合 oa → /oʊ/", parts:[{l:"c",t:"c"},{l:"oa",t:"lv"},{l:"t",t:"c"}], zh:"ㄎ + ㄡ + ㄊ", type:"R", note:"【規則7】oa 兩母音連在一起→前面的 o 說話，念長音 /oʊ/（ㄡ）。" },
+    "cold": { rule:"規則2｜長母音 o /oʊ/（-old特殊模式）", parts:[{l:"c",t:"c"},{l:"o",t:"lv"},{l:"ld",t:"c"}], zh:"ㄎ + ㄡ + ㄌㄉ", type:"S", note:"【規則2】-old 字尾時 o 念長音 /oʊ/（ㄡ），同類：old, gold, hold。" },
+    "come": { rule:"規則42｜Magic E例外，o念/ʌ/", parts:[{l:"c",t:"c"},{l:"o",t:"sv"},{l:"m",t:"c"},{l:"e",t:"sl"}], zh:"ㄎ + ㄚ(短) + ㄇ", type:"I", note:"【規則42】看起來像魔法E（規則4），但 o 念短音 /ʌ/（ㄚ）而非長音，需直接背！同類：some, love, done。" },
+    "cook": { rule:"規則7｜母音組合 oo=/ʊ/", parts:[{l:"c",t:"c"},{l:"oo",t:"sv"},{l:"k",t:"c"}], zh:"ㄎ + ㄨ(短) + ㄎ", type:"S", note:"【規則7】oo 在此念短音 /ʊ/（短ㄨ），與 food 的長音 /uː/ 不同，需依字義區分。" },
+    "cap": { rule:"規則1｜短母音 a /æ/", parts:[{l:"c",t:"c"},{l:"a",t:"sv"},{l:"p",t:"c"}], zh:"ㄎ + ㄝ(短) + ㄆ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/。" },
+    "car": { rule:"規則12｜R控母音 ar=/ɑːr/", parts:[{l:"c",t:"c"},{l:"ar",t:"rc"}], zh:"ㄎ + ㄚr", type:"R", note:"【規則12】ar 念 R 控母音 /ɑːr/（捲舌ㄚ）。" },
+    "cut": { rule:"規則1｜短母音 u /ʌ/", parts:[{l:"c",t:"c"},{l:"u",t:"sv"},{l:"t",t:"c"}], zh:"ㄎ + ㄚ(短) + ㄊ", type:"R", note:"【規則1】u 被子音夾住→念短音 /ʌ/（接近ㄚ）。" },
+    "cool": { rule:"規則7｜母音組合 oo=/uː/", parts:[{l:"c",t:"c"},{l:"oo",t:"lv"},{l:"l",t:"c"}], zh:"ㄎ + ㄨ(長) + ㄌ", type:"R", note:"【規則7】oo 兩母音連在一起，通常念長音 /uː/（長ㄨ），嘴型撮圓。" },
+    "copy": { rule:"規則1｜短母音 o + 規則9｜字尾y", parts:[{l:"c",t:"c"},{l:"o",t:"sv"},{l:"p",t:"c"},{l:"y",t:"lv"}], zh:"ㄎ + ㄛ(短) + ㄆ + ㄧ", type:"M", note:"【規則1】o 念短音 /ɒ/。【規則9】多音節字尾 y 念 /iː/（ㄧ）。兩音節：cop-y。" },
+    "cute": { rule:"規則4｜魔法E u_e → /juː/", parts:[{l:"c",t:"c"},{l:"u",t:"lv"},{l:"t",t:"c"},{l:"e",t:"sl"}], zh:"ㄎ + ㄩ + ㄊ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 u 念長音 /juː/（ㄩ）。模式：u + t + e。" },
+    "dark": { rule:"規則12｜R控母音 ar=/ɑːr/", parts:[{l:"d",t:"c"},{l:"ar",t:"rc"},{l:"k",t:"c"}], zh:"ㄉ + ㄚr + ㄎ", type:"R", note:"【規則12】ar 念 R 控母音 /ɑːr/（捲舌ㄚ）。" },
+    "date": { rule:"規則4｜魔法E a_e → /eɪ/", parts:[{l:"d",t:"c"},{l:"a",t:"lv"},{l:"t",t:"c"},{l:"e",t:"sl"}], zh:"ㄉ + ㄟ + ㄊ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 a 念長音 /eɪ/（ㄟ）。模式：a + t + e。" },
+    "do": { rule:"規則42｜o=/uː/ 不規則", parts:[{l:"d",t:"c"},{l:"o",t:"sl"}], zh:"ㄉ + ㄨ", type:"I", note:"【規則42】o 在此念 /uː/（ㄨ），不是通常的短音或長音 /oʊ/，屬不規則，直接背。同類：to, who。" },
+    "day": { rule:"規則10｜母音組合 ay → /eɪ/", parts:[{l:"d",t:"c"},{l:"ay",t:"lv"}], zh:"ㄉ + ㄟ", type:"R", note:"【規則10】ay 用在字尾，念長音 /eɪ/（ㄟ）。ai 用在字中間，ay 用在字尾。" },
+    "die": { rule:"規則4｜魔法E ie → /aɪ/", parts:[{l:"d",t:"c"},{l:"i",t:"lv"},{l:"e",t:"sl"}], zh:"ㄉ + ㄞ", type:"S", note:"【規則4】ie 組合類似魔法E模式，i 念長音 /aɪ/（ㄞ），e 靜音不發音。" },
+    "desk": { rule:"規則1｜短母音 e /ɛ/", parts:[{l:"d",t:"c"},{l:"e",t:"sv"},{l:"sk",t:"c"}], zh:"ㄉ + ㄝ(短) + ㄙㄎ", type:"R", note:"【規則1】e 被子音夾住→念短音 /ɛ/。sk 是字尾子音群。" },
+    "dish": { rule:"規則1｜短母音 i + 規則17｜Digraph sh", parts:[{l:"d",t:"c"},{l:"i",t:"sv"},{l:"sh",t:"sp"}], zh:"ㄉ + ㄝ(短) + ㄒ", type:"R", note:"【規則1】i 念短音 /ɪ/。【規則17】sh 兩字母合成 /ʃ/（ㄒ）。" },
+    "doll": { rule:"規則1｜短母音 o + 規則22｜雙寫ll", parts:[{l:"d",t:"c"},{l:"o",t:"sv"},{l:"ll",t:"c"}], zh:"ㄉ + ㄛ(短) + ㄌ", type:"R", note:"【規則1】o 念短音 /ɒ/。【規則22】ll 雙寫只發一個音，讓前面母音保持短音。" },
+    "door": { rule:"規則12｜R控母音 oor=/ɔːr/", parts:[{l:"d",t:"c"},{l:"oor",t:"rc"}], zh:"ㄉ + ㄛr", type:"S", note:"【規則12】oor 組合念 R 控母音 /ɔːr/（捲舌ㄛ），與一般 oo 短音不同，需直接記。" },
+    "ear (s)": { rule:"規則12｜R控母音 ear=/ɪr/", parts:[{l:"ear",t:"rc"},{l:"s",t:"c"}], zh:"ㄝr + (ㄗ)", type:"R", note:"【規則12】ear 念 R 控母音 /ɪr/（接近ㄝ加捲舌）。加 s 表複數時念 /z/（ㄗ）。" },
+    "dig": { rule:"規則1｜短母音 i /ɪ/", parts:[{l:"d",t:"c"},{l:"i",t:"sv"},{l:"g",t:"c"}], zh:"ㄉ + ㄝ(短) + ㄍ", type:"R", note:"【規則1】i 被子音夾住→念短音 /ɪ/。" },
+    "dot": { rule:"規則1｜短母音 o /ɒ/", parts:[{l:"d",t:"c"},{l:"o",t:"sv"},{l:"t",t:"c"}], zh:"ㄉ + ㄛ(短) + ㄊ", type:"R", note:"【規則1】o 被子音夾住→念短音 /ɒ/。" },
+    "egg": { rule:"規則1｜短母音 e + 規則22｜雙寫gg", parts:[{l:"e",t:"sv"},{l:"gg",t:"c"}], zh:"ㄝ(短) + ㄍ", type:"R", note:"【規則1】e 念短音 /ɛ/。【規則22】gg 雙寫只發一個音。" },
+    "eye (s)": { rule:"規則42｜eye=/aɪ/ 不規則", parts:[{l:"eye",t:"sl"},{l:"s",t:"c"}], zh:"ㄞ + (ㄗ)", type:"I", note:"【規則42】整個 eye 拼寫特殊，念 /aɪ/（ㄞ），需直接背。加 s 表複數念 /z/（ㄗ）。" },
+    "face": { rule:"規則4｜魔法E a_e → /eɪ/ + 規則5｜軟音c", parts:[{l:"f",t:"c"},{l:"a",t:"lv"},{l:"c",t:"c"},{l:"e",t:"sl"}], zh:"ㄈ + ㄟ + ㄙ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 a 念長音 /eɪ/（ㄟ）。【規則5】c 在 e 前念軟音 /s/（ㄙ）。" },
+    "fast": { rule:"規則1｜短母音 a /æ/", parts:[{l:"f",t:"c"},{l:"a",t:"sv"},{l:"st",t:"c"}], zh:"ㄈ + ㄝ(短) + ㄙㄊ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/。st 是字尾子音群。" },
+    "feel": { rule:"規則7｜母音組合 ee → /iː/", parts:[{l:"f",t:"c"},{l:"ee",t:"lv"},{l:"l",t:"c"}], zh:"ㄈ + ㄧ(長) + ㄌ", type:"R", note:"【規則7】ee 兩母音連在一起，念長音 /iː/（ㄧ），嘴角大幅拉開。" },
+    "fish": { rule:"規則1｜短母音 i + 規則17｜Digraph sh", parts:[{l:"f",t:"c"},{l:"i",t:"sv"},{l:"sh",t:"sp"}], zh:"ㄈ + ㄝ(短) + ㄒ", type:"R", note:"【規則1】i 念短音 /ɪ/。【規則17】sh 合成 /ʃ/（ㄒ）。" },
+    "end": { rule:"規則1｜短母音 e /ɛ/", parts:[{l:"e",t:"sv"},{l:"nd",t:"c"}], zh:"ㄝ(短) + ㄋㄉ", type:"R", note:"【規則1】e 被子音夾住→念短音 /ɛ/。nd 是字尾子音群。" },
+    "eve": { rule:"規則4｜魔法E e_e → /iː/", parts:[{l:"e",t:"lv"},{l:"v",t:"c"},{l:"e",t:"sl"}], zh:"ㄧ + ㄈ", type:"S", note:"【規則4】字尾 e 靜音，讓中間的 e 念長音 /iː/（ㄧ）。模式：e + v + e。" },
+    "far": { rule:"規則12｜R控母音 ar=/ɑːr/", parts:[{l:"f",t:"c"},{l:"ar",t:"rc"}], zh:"ㄈ + ㄚr", type:"R", note:"【規則12】ar 念 R 控母音 /ɑːr/（捲舌ㄚ）。" },
+    "five": { rule:"規則4｜魔法E i_e → /aɪ/", parts:[{l:"f",t:"c"},{l:"i",t:"lv"},{l:"v",t:"c"},{l:"e",t:"sl"}], zh:"ㄈ + ㄞ + ㄈ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 i 念長音 /aɪ/（ㄞ）。模式：i + v + e。" },
+    "food": { rule:"規則7｜母音組合 oo=/uː/", parts:[{l:"f",t:"c"},{l:"oo",t:"lv"},{l:"d",t:"c"}], zh:"ㄈ + ㄨ(長) + ㄉ", type:"R", note:"【規則7】oo 兩母音連在一起，念長音 /uː/（長ㄨ），嘴型撮圓。" },
+    "fork": { rule:"規則12｜R控母音 or=/ɔːr/", parts:[{l:"f",t:"c"},{l:"or",t:"rc"},{l:"k",t:"c"}], zh:"ㄈ + ㄛr + ㄎ", type:"R", note:"【規則12】or 念 R 控母音 /ɔːr/（捲舌ㄛ）。" },
+    "four": { rule:"規則12｜R控母音 our=/ɔːr/", parts:[{l:"f",t:"c"},{l:"our",t:"rc"}], zh:"ㄈ + ㄛr", type:"S", note:"【規則12】our 組合在此念 R 控母音 /ɔːr/（捲舌ㄛ），需直接記。" },
+    "gift": { rule:"規則1｜短母音 i /ɪ/", parts:[{l:"g",t:"c"},{l:"i",t:"sv"},{l:"ft",t:"c"}], zh:"ㄍ + ㄝ(短) + ㄈㄊ", type:"R", note:"【規則1】i 被子音夾住→念短音 /ɪ/。ft 是字尾子音群。" },
+    "fat": { rule:"規則1｜短母音 a /æ/", parts:[{l:"f",t:"c"},{l:"a",t:"sv"},{l:"t",t:"c"}], zh:"ㄈ + ㄝ(短) + ㄊ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/，嘴巴張到最大。" },
+    "few": { rule:"規則7｜母音組合 ew → /uː/", parts:[{l:"f",t:"c"},{l:"ew",t:"lv"}], zh:"ㄈ + ㄧㄨ", type:"R", note:"【規則7】ew 兩母音連在一起，念長音 /juː/（ㄧㄨ）。" },
+    "fix": { rule:"規則1｜短母音 i /ɪ/", parts:[{l:"f",t:"c"},{l:"i",t:"sv"},{l:"x",t:"c"}], zh:"ㄈ + ㄝ(短) + ㄎㄙ", type:"R", note:"【規則1】i 被子音夾住→念短音 /ɪ/。x 念 /ks/（ㄎㄙ）。" },
+    "goat": { rule:"規則7｜母音組合 oa → /oʊ/", parts:[{l:"g",t:"c"},{l:"oa",t:"lv"},{l:"t",t:"c"}], zh:"ㄍ + ㄡ + ㄊ", type:"R", note:"【規則7】oa 兩母音連在一起→前面的 o 說話，念長音 /oʊ/（ㄡ）。" },
+    "gray": { rule:"規則10｜母音組合 ay → /eɪ/", parts:[{l:"gr",t:"bl"},{l:"ay",t:"lv"}], zh:"ㄍㄖ + ㄟ", type:"R", note:"【規則18】gr 子音群連念。【規則10】ay 在字尾念長音 /eɪ/（ㄟ）。" },
+    "head": { rule:"規則42｜ea=/ɛ/ 不規則", parts:[{l:"h",t:"c"},{l:"ea",t:"sv"},{l:"d",t:"c"}], zh:"ㄏ + ㄝ(短) + ㄉ", type:"I", note:"【規則42】ea 在此不念長音 /iː/（規則7），而念短音 /ɛ/，屬不規則，直接背！同類：bread, dead。" },
+    "help": { rule:"規則1｜短母音 e /ɛ/", parts:[{l:"h",t:"c"},{l:"e",t:"sv"},{l:"lp",t:"c"}], zh:"ㄏ + ㄝ(短) + ㄌㄆ", type:"R", note:"【規則1】e 被子音夾住→念短音 /ɛ/。lp 是字尾子音群。" },
+    "hurt": { rule:"規則12｜R控母音 ur=/ɜːr/", parts:[{l:"h",t:"c"},{l:"ur",t:"rc"},{l:"t",t:"c"}], zh:"ㄏ + ㄜr + ㄊ", type:"R", note:"【規則12】ur 念 R 控母音 /ɜːr/（捲舌ㄜ）。" },
+    "fly": { rule:"規則9｜字尾 y=/aɪ/（單音節）", parts:[{l:"fl",t:"bl"},{l:"y",t:"lv"}], zh:"ㄈㄌ + ㄞ", type:"R", note:"【規則18】fl 子音群連念。【規則9】單音節字尾 y 念長音 /aɪ/（ㄞ）。" },
+    "fog": { rule:"規則1｜短母音 o /ɒ/", parts:[{l:"f",t:"c"},{l:"o",t:"sv"},{l:"g",t:"c"}], zh:"ㄈ + ㄛ(短) + ㄍ", type:"R", note:"【規則1】o 被子音夾住→念短音 /ɒ/，嘴巴呈圓形快速念完。" },
+    "fox": { rule:"規則1｜短母音 o /ɒ/", parts:[{l:"f",t:"c"},{l:"o",t:"sv"},{l:"x",t:"c"}], zh:"ㄈ + ㄛ(短) + ㄎㄙ", type:"R", note:"【規則1】o 被子音夾住→念短音 /ɒ/。x 念 /ks/（ㄎㄙ）。" },
+    "kick": { rule:"規則1｜短母音 i + 規則19｜CK規則", parts:[{l:"k",t:"c"},{l:"i",t:"sv"},{l:"ck",t:"c"}], zh:"ㄎ + ㄝ(短) + ㄎ", type:"R", note:"【規則1】i 念短音 /ɪ/。【規則19】CK 只出現在單個短母音之後。" },
+    "knee": { rule:"規則17｜kn靜音k=/n/ + 規則7｜ee=/iː/", parts:[{l:"kn",t:"sl"},{l:"ee",t:"lv"}], zh:"ㄋ + ㄧ(長)", type:"S", note:"【規則17】kn 開頭時 k 完全不發音（特殊規則），只念 n（ㄋ）。同類：know, knife。【規則7】ee 念長音 /iː/。" },
+    "kite": { rule:"規則4｜魔法E i_e → /aɪ/", parts:[{l:"k",t:"c"},{l:"i",t:"lv"},{l:"t",t:"c"},{l:"e",t:"sl"}], zh:"ㄎ + ㄞ + ㄊ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 i 念長音 /aɪ/（ㄞ）。模式：i + t + e。" },
+    "lake": { rule:"規則4｜魔法E a_e → /eɪ/", parts:[{l:"l",t:"c"},{l:"a",t:"lv"},{l:"k",t:"c"},{l:"e",t:"sl"}], zh:"ㄌ + ㄟ + ㄎ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 a 念長音 /eɪ/（ㄟ）。模式：a + k + e。" },
+    "late": { rule:"規則4｜魔法E a_e → /eɪ/", parts:[{l:"l",t:"c"},{l:"a",t:"lv"},{l:"t",t:"c"},{l:"e",t:"sl"}], zh:"ㄌ + ㄟ + ㄊ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 a 念長音 /eɪ/（ㄟ）。模式：a + t + e。" },
+    "fry": { rule:"規則9｜字尾 y=/aɪ/（單音節）", parts:[{l:"fr",t:"bl"},{l:"y",t:"lv"}], zh:"ㄈㄖ + ㄞ", type:"R", note:"【規則18】fr 子音群連念。【規則9】單音節字尾 y 念長音 /aɪ/（ㄞ）。" },
+    "fun": { rule:"規則1｜短母音 u /ʌ/", parts:[{l:"f",t:"c"},{l:"u",t:"sv"},{l:"n",t:"c"}], zh:"ㄈ + ㄚ(短) + ㄋ", type:"R", note:"【規則1】u 被子音夾住→念短音 /ʌ/（接近ㄚ）。" },
+    "gas": { rule:"規則1｜短母音 a /æ/", parts:[{l:"g",t:"c"},{l:"a",t:"sv"},{l:"s",t:"c"}], zh:"ㄍ + ㄝ(短) + ㄙ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/。" },
+    "like": { rule:"規則4｜魔法E i_e → /aɪ/", parts:[{l:"l",t:"c"},{l:"i",t:"lv"},{l:"k",t:"c"},{l:"e",t:"sl"}], zh:"ㄌ + ㄞ + ㄎ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 i 念長音 /aɪ/（ㄞ）。模式：i + k + e。" },
+    "lion": { rule:"規則3｜CV開音節 i + 規則42｜ion（多音節）", parts:[{l:"l",t:"c"},{l:"i",t:"lv"},{l:"on",t:"c"}], zh:"ㄌ + ㄞ + ㄣ", type:"M", note:"第一音節 li- 開音節，i 念長音 /aɪ/（ㄞ）。字尾 -on 念輕聲 /ən/。兩個音節：li-on。" },
+    "lazy": { rule:"規則3｜CV開音節 a=/eɪ/ + 規則9｜字尾y", parts:[{l:"l",t:"c"},{l:"a",t:"lv"},{l:"z",t:"c"},{l:"y",t:"lv"}], zh:"ㄌ + ㄟ + ㄗ + ㄧ", type:"M", note:"第一音節 la- 是開音節，a 念長音 /eɪ/（ㄟ）。【規則9】字尾 y 念 /iː/（ㄧ）。兩音節：la-zy。" },
+    "left": { rule:"規則1｜短母音 e /ɛ/", parts:[{l:"l",t:"c"},{l:"e",t:"sv"},{l:"ft",t:"c"}], zh:"ㄌ + ㄝ(短) + ㄈㄊ", type:"R", note:"【規則1】e 被子音夾住→念短音 /ɛ/。ft 是字尾子音群。" },
+    "many": { rule:"規則42｜a=/ɛ/ 不規則 + 規則9｜字尾y", parts:[{l:"m",t:"c"},{l:"a",t:"sv"},{l:"n",t:"c"},{l:"y",t:"lv"}], zh:"ㄇ + ㄝ(短) + ㄋ + ㄧ", type:"I", note:"【規則42】a 在此不規則念 /ɛ/（ㄝ），非一般的 /æ/，需直接背。【規則9】字尾 y 念 /iː/。兩音節：man-y。" },
+    "get": { rule:"規則1｜短母音 e /ɛ/", parts:[{l:"g",t:"c"},{l:"e",t:"sv"},{l:"t",t:"c"}], zh:"ㄍ + ㄝ(短) + ㄊ", type:"R", note:"【規則1】e 被子音夾住→念短音 /ɛ/。" },
+    "God": { rule:"規則1｜短母音 o /ɒ/", parts:[{l:"G",t:"c"},{l:"o",t:"sv"},{l:"d",t:"c"}], zh:"ㄍ + ㄛ(短) + ㄉ", type:"R", note:"【規則1】o 被子音夾住→念短音 /ɒ/。字首大寫，為專有名詞用法。" },
+    "guy": { rule:"規則42｜uy=/aɪ/ 不規則", parts:[{l:"g",t:"c"},{l:"uy",t:"sl"}], zh:"ㄍ + ㄞ", type:"I", note:"【規則42】uy 組合在此念 /aɪ/（ㄞ），屬不規則拼法，直接背，同類：buy。" },
+    "math": { rule:"規則1｜短母音 a + 規則17｜Digraph th", parts:[{l:"m",t:"c"},{l:"a",t:"sv"},{l:"th",t:"sp"}], zh:"ㄇ + ㄝ(短) + ㄙ", type:"R", note:"【規則1】a 念短音 /æ/。【規則17】th 兩字母合成 /θ/（咬舌音，ㄙ）。" },
+    "milk": { rule:"規則1｜短母音 i /ɪ/", parts:[{l:"m",t:"c"},{l:"i",t:"sv"},{l:"lk",t:"c"}], zh:"ㄇ + ㄝ(短) + ㄌㄎ", type:"R", note:"【規則1】i 被子音夾住→念短音 /ɪ/。lk 是字尾子音群。" },
+    "menu": { rule:"規則1｜短母音 e + 規則3｜開音節u（多音節）", parts:[{l:"m",t:"c"},{l:"e",t:"sv"},{l:"n",t:"c"},{l:"u",t:"lv"}], zh:"ㄇ + ㄝ(短) + ㄋ + ㄩ", type:"M", note:"第一音節 men- 為閉音節，e 念短音 /ɛ/。第二音節 -u 開音節，念長音 /juː/（ㄩ）。兩音節：men-u。" },
+    "neck": { rule:"規則1｜短母音 e + 規則19｜CK規則", parts:[{l:"n",t:"c"},{l:"e",t:"sv"},{l:"ck",t:"c"}], zh:"ㄋ + ㄝ(短) + ㄎ", type:"R", note:"【規則1】e 念短音 /ɛ/。【規則19】CK 只出現在單個短母音之後。" },
+    "name": { rule:"規則4｜魔法E a_e → /eɪ/", parts:[{l:"n",t:"c"},{l:"a",t:"lv"},{l:"m",t:"c"},{l:"e",t:"sl"}], zh:"ㄋ + ㄟ + ㄇ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 a 念長音 /eɪ/（ㄟ）。模式：a + m + e。" },
+    "gym": { rule:"規則5｜軟音g=/dʒ/ + 規則1｜短母音y", parts:[{l:"g",t:"c"},{l:"y",t:"sv"},{l:"m",t:"c"}], zh:"ㄐ + ㄧ(短) + ㄇ", type:"S", note:"【規則5】g 在 y 前念軟音 /dʒ/（ㄐ）。y 在此當母音，念短音 /ɪ/。" },
+    "gun": { rule:"規則1｜短母音 u /ʌ/", parts:[{l:"g",t:"c"},{l:"u",t:"sv"},{l:"n",t:"c"}], zh:"ㄍ + ㄚ(短) + ㄋ", type:"R", note:"【規則1】u 被子音夾住→念短音 /ʌ/（接近ㄚ）。" },
+    "he": { rule:"規則3｜CV開音節 e=/iː/", parts:[{l:"h",t:"c"},{l:"e",t:"lv"}], zh:"ㄏ + ㄧ(長)", type:"R", note:"【規則3】單音節「子音+母音」結尾（開音節），母音念自己的名字，長音 /iː/（ㄧ）。" },
+    "nose": { rule:"規則4｜魔法E o_e → /oʊ/", parts:[{l:"n",t:"c"},{l:"o",t:"lv"},{l:"s",t:"c"},{l:"e",t:"sl"}], zh:"ㄋ + ㄡ + ㄗ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 o 念長音 /oʊ/（ㄡ）。s 在此念濁音 /z/（ㄗ）。模式：o + s + e。" },
+    "open": { rule:"規則3｜CV開音節 o=/oʊ/（多音節）", parts:[{l:"o",t:"lv"},{l:"p",t:"c"},{l:"en",t:"c"}], zh:"ㄡ + ㄆ + ㄣ", type:"M", note:"第一音節 o- 開音節，念長音 /oʊ/（ㄡ）。第二音節 -pen 念輕聲 /ən/。兩個音節：o-pen。" },
+    "page": { rule:"規則4｜魔法E a_e → /eɪ/", parts:[{l:"p",t:"c"},{l:"a",t:"lv"},{l:"g",t:"c"},{l:"e",t:"sl"}], zh:"ㄆ + ㄟ + ㄐ", type:"R", note:"【規則4】字尾 e 靜音，讓中間的 a 念長音 /eɪ/（ㄟ）。g 在 e 前念軟音 /dʒ/（ㄐ）。" },
+    "pork": { rule:"規則12｜R控母音 or=/ɔːr/", parts:[{l:"p",t:"c"},{l:"or",t:"rc"},{l:"k",t:"c"}], zh:"ㄆ + ㄛr + ㄎ", type:"R", note:"【規則12】or 念 R 控母音 /ɔːr/（捲舌ㄛ）。" },
+    "pull": { rule:"規則42｜u=/ʊ/ 不規則", parts:[{l:"p",t:"c"},{l:"u",t:"sv"},{l:"ll",t:"c"}], zh:"ㄆ + ㄨ(短) + ㄌ", type:"S", note:"【規則42】u 在此念短音 /ʊ/（短ㄨ），非一般的 /ʌ/，需依字義記。【規則22】ll 雙寫。" },
+    "ham": { rule:"規則1｜短母音 a /æ/", parts:[{l:"h",t:"c"},{l:"a",t:"sv"},{l:"m",t:"c"}], zh:"ㄏ + ㄝ(短) + ㄇ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/，嘴巴張到最大。" },
+    "hat": { rule:"規則1｜短母音 a /æ/", parts:[{l:"h",t:"c"},{l:"a",t:"sv"},{l:"t",t:"c"}], zh:"ㄏ + ㄝ(短) + ㄊ", type:"R", note:"【規則1】a 被子音夾住→念短音 /æ/。" },
+    "hen": { rule:"規則1｜短母音 e /ɛ/", parts:[{l:"h",t:"c"},{l:"e",t:"sv"},{l:"n",t:"c"}], zh:"ㄏ + ㄝ(短) + ㄋ", type:"R", note:"【規則1】e 被子音夾住→念短音 /ɛ/。" },
+    "push": { rule:"規則42｜u=/ʊ/ 不規則 + 規則17｜sh", parts:[{l:"p",t:"c"},{l:"u",t:"sv"},{l:"sh",t:"sp"}], zh:"ㄆ + ㄨ(短) + ㄒ", type:"S", note:"【規則42】u 在此念短音 /ʊ/（短ㄨ）。【規則17】sh 合成 /ʃ/（ㄒ）。" },
+    "park": { rule:"規則12｜R控母音 ar=/ɑːr/", parts:[{l:"p",t:"c"},{l:"ar",t:"rc"},{l:"k",t:"c"}], zh:"ㄆ + ㄚr + ㄎ", type:"R", note:"【規則12】ar 念 R 控母音 /ɑːr/（捲舌ㄚ）。" },
+    "pink": { rule:"規則1｜短母音 i /ɪ/", parts:[{l:"p",t:"c"},{l:"i",t:"sv"},{l:"nk",t:"c"}], zh:"ㄆ + ㄝ(短) + ㄥㄎ", type:"R", note:"【規則1】i 被子音夾住→念短音 /ɪ/。nk 合唸成鼻音字尾 /ŋk/（ㄥㄎ）。" },
+    "play": { rule:"規則10｜母音組合 ay → /eɪ/", parts:[{l:"pl",t:"bl"},{l:"ay",t:"lv"}], zh:"ㄆㄌ + ㄟ", type:"R", note:"【規則18】pl 子音群連念。【規則10】ay 在字尾念長音 /eɪ/（ㄟ）。" },
+    "quiz": { rule:"規則1｜短母音 i /ɪ/（qu合音）", parts:[{l:"qu",t:"bl"},{l:"i",t:"sv"},{l:"z",t:"c"}], zh:"ㄎㄨ + ㄝ(短) + ㄗ", type:"R", note:"【規則18】qu 固定合念 /kw/（ㄎㄨ）。i 被子音夾住→念短音 /ɪ/。" },
+    "hey": { rule:"規則10｜母音組合 ey → /eɪ/", parts:[{l:"h",t:"c"},{l:"ey",t:"lv"}], zh:"ㄏ + ㄟ", type:"R", note:"【規則10】ey 在字尾念長音 /eɪ/（ㄟ），發音同 ay。" },
+    "hit": { rule:"規則1｜短母音 i /ɪ/", parts:[{l:"h",t:"c"},{l:"i",t:"sv"},{l:"t",t:"c"}], zh:"ㄏ + ㄝ(短) + ㄊ", type:"R", note:"【規則1】i 被子音夾住→念短音 /ɪ/。" },
+    "hop": { rule:"規則1｜短母音 o /ɒ/", parts:[{l:"h",t:"c"},{l:"o",t:"sv"},{l:"p",t:"c"}], zh:"ㄏ + ㄛ(短) + ㄆ", type:"R", note:"【規則1】o 被子音夾住→念短音 /ɒ/，嘴巴呈圓形快速念完。（單腳）跳意指單腳蹦跳。" },
 };
 
 // ======================================================
@@ -1639,7 +1801,168 @@ const masterData = [
     { g:"4下",wk:"W21",w:"restaurant",s:"At a ___.",c:"在餐廳。" },
     { g:"4下",wk:"W21",w:"supermarket",s:"Go to the ___.",c:"去超市。" },
     { g:"4下",wk:"W21",w:"station",s:"Train ___.",c:"火車站。" },
-    { g:"4下",wk:"W21",w:"stadium",s:"Baseball ___.",c:"棒球體育場。" }
+    { g:"4下",wk:"W21",w:"stadium",s:"Baseball ___.",c:"棒球體育場。" },
+    // ---- 5上 (新增) ----
+    { g:"5上",wk:"W2",w:"go",s:"I have to ___ home now.",c:"我現在必須回家了。" },
+    { g:"5上",wk:"W2",w:"all",s:"___ the kids are happy.",c:"所有的孩子都很開心。" },
+    { g:"5上",wk:"W2",w:"ant",s:"An ___ is very small.",c:"螞蟻非常小。" },
+    { g:"5上",wk:"W2",w:"arm",s:"I hurt my ___.",c:"我的手臂受傷了。" },
+    { g:"5上",wk:"W2",w:"ask",s:"Can I ___ you a question?",c:"我可以問你一個問題嗎？" },
+    { g:"5上",wk:"W2",w:"a.m.",s:"School starts at 8 ___.",c:"學校早上八點開始上課。" },
+    { g:"5上",wk:"W2",w:"as",s:"She is ___ tall as me.",c:"她跟我一樣高。" },
+    { g:"5上",wk:"W2",w:"at",s:"I am ___ school now.",c:"我現在在學校。" },
+    { g:"5上",wk:"W3",w:"bag",s:"I put my book in the ___.",c:"我把書放進袋子裡。" },
+    { g:"5上",wk:"W3",w:"bus",s:"We take the ___ to school.",c:"我們搭公車上學。" },
+    { g:"5上",wk:"W3",w:"buy",s:"I want to ___ a new bike.",c:"我想買一台新腳踏車。" },
+    { g:"5上",wk:"W3",w:"cat",s:"The ___ is sleeping on the sofa.",c:"貓正在沙發上睡覺。" },
+    { g:"5上",wk:"W3",w:"cry",s:"Don't ___, it's OK.",c:"別哭，沒事的。" },
+    { g:"5上",wk:"W3",w:"act",s:"She can ___ very well.",c:"她演戲演得很好。" },
+    { g:"5上",wk:"W3",w:"add",s:"Please ___ some sugar.",c:"請加一些糖。" },
+    { g:"5上",wk:"W3",w:"age",s:"What is your ___?",c:"你的年齡是多少？" },
+    { g:"5上",wk:"W4",w:"cup",s:"I need a ___ of tea.",c:"我需要一杯茶。" },
+    { g:"5上",wk:"W4",w:"dry",s:"The towel is ___ now.",c:"毛巾現在是乾的。" },
+    { g:"5上",wk:"W4",w:"eat",s:"Let's ___ dinner together.",c:"我們一起吃晚餐吧。" },
+    { g:"5上",wk:"W4",w:"elf",s:"The little ___ lives in the forest.",c:"那個小精靈住在森林裡。" },
+    { g:"5上",wk:"W4",w:"fan",s:"Turn on the ___, it's hot.",c:"打開電風扇，好熱喔。" },
+    { g:"5上",wk:"W4",w:"ago",s:"I met her two years ___.",c:"我兩年前遇見她。" },
+    { g:"5上",wk:"W4",w:"air",s:"The ___ is fresh in the mountains.",c:"山上的空氣很新鮮。" },
+    { g:"5上",wk:"W4",w:"and",s:"I like apples ___ bananas.",c:"我喜歡蘋果和香蕉。" },
+    { g:"5上",wk:"W5",w:"fax",s:"Please send me a ___.",c:"請傳真給我。" },
+    { g:"5上",wk:"W5",w:"his",s:"This is ___ book.",c:"這是他的書。" },
+    { g:"5上",wk:"W5",w:"her",s:"I like ___ new dress.",c:"我喜歡她的新洋裝。" },
+    { g:"5上",wk:"W5",w:"hot",s:"The soup is very ___.",c:"這湯很熱。" },
+    { g:"5上",wk:"W5",w:"jog",s:"I ___ every morning.",c:"我每天早上慢跑。" },
+    { g:"5上",wk:"W5",w:"any",s:"Do you have ___ questions?",c:"你有任何問題嗎？" },
+    { g:"5上",wk:"W5",w:"art",s:"I love ___ class.",c:"我喜歡美術課。" },
+    { g:"5上",wk:"W5",w:"by",s:"Come ___ my house tonight.",c:"今晚順道來我家。" },
+    { g:"5上",wk:"W6",w:"leg",s:"He broke his ___.",c:"他的腿骨折了。" },
+    { g:"5上",wk:"W6",w:"new",s:"I bought a ___ phone.",c:"我買了一支新手機。" },
+    { g:"5上",wk:"W6",w:"old",s:"This is an ___ house.",c:"這是一棟舊房子。" },
+    { g:"5上",wk:"W6",w:"pet",s:"My ___ is a dog.",c:"我的寵物是一隻狗。" },
+    { g:"5上",wk:"W6",w:"run",s:"I ___ every day.",c:"我每天跑步。" },
+    { g:"5上",wk:"W6",w:"bad",s:"That is a ___ idea.",c:"那是一個壞主意。" },
+    { g:"5上",wk:"W6",w:"bar",s:"There is a coffee ___ near here.",c:"這附近有一家咖啡吧。" },
+    { g:"5上",wk:"W6",w:"bat",s:"The ___ flies at night.",c:"蝙蝠在夜間飛行。" },
+    { g:"5上",wk:"W7",w:"red",s:"She wears a ___ dress.",c:"她穿著一件紅色洋裝。" },
+    { g:"5上",wk:"W7",w:"sad",s:"Why do you look ___?",c:"你為什麼看起來很傷心？" },
+    { g:"5上",wk:"W7",w:"sea",s:"We swim in the ___.",c:"我們在海裡游泳。" },
+    { g:"5上",wk:"W7",w:"see",s:"I can ___ the stars tonight.",c:"我今晚能看到星星。" },
+    { g:"5上",wk:"W7",w:"shy",s:"The little boy is ___.",c:"那個小男孩很害羞。" },
+    { g:"5上",wk:"W7",w:"bed",s:"I go to ___ at nine.",c:"我九點上床睡覺。" },
+    { g:"5上",wk:"W7",w:"bee",s:"A ___ is flying near the flower.",c:"一隻蜜蜂在花朵附近飛。" },
+    { g:"5上",wk:"W7",w:"big",s:"This is a ___ box.",c:"這是一個大盒子。" },
+    { g:"5上",wk:"W8",w:"ten",s:"I have ___ fingers.",c:"我有十根手指。" },
+    { g:"5上",wk:"W8",w:"two",s:"She has ___ cats.",c:"她有兩隻貓。" },
+    { g:"5上",wk:"W8",w:"baby",s:"The ___ is sleeping.",c:"寶寶正在睡覺。" },
+    { g:"5上",wk:"W8",w:"bank",s:"My father works at a ___.",c:"我爸爸在銀行上班。" },
+    { g:"5上",wk:"W8",w:"bear",s:"A ___ is walking in the forest.",c:"一隻熊正在森林裡走。" },
+    { g:"5上",wk:"W8",w:"bit",s:"Wait a ___, please.",c:"請稍等一下。" },
+    { g:"5上",wk:"W8",w:"bow",s:"He gave a ___ to the audience.",c:"他向觀眾鞠了個躬。" },
+    { g:"5上",wk:"W8",w:"box",s:"Open the ___, please.",c:"請打開盒子。" },
+    { g:"5上",wk:"W9",w:"beef",s:"I don't eat ___.",c:"我不吃牛肉。" },
+    { g:"5上",wk:"W9",w:"belt",s:"He wears a black ___.",c:"他繫著黑色的帶子。" },
+    { g:"5上",wk:"W9",w:"bite",s:"Don't let the dog ___ you.",c:"別讓狗咬你。" },
+    { g:"5上",wk:"W9",w:"blue",s:"The sky is ___ today.",c:"今天天空是藍色的。" },
+    { g:"5上",wk:"W9",w:"boat",s:"We take a ___ to the island.",c:"我們搭小船去島上。" },
+    { g:"5上",wk:"W9",w:"boy",s:"That ___ is my brother.",c:"那個男孩是我弟弟。" },
+    { g:"5上",wk:"W9",w:"bug",s:"There is a ___ on the leaf.",c:"葉子上有一隻蟲子。" },
+    { g:"5上",wk:"W9",w:"bun",s:"I ate a sweet ___ for breakfast.",c:"我早餐吃了一個甜的小圓麵包。" },
+    { g:"5上",wk:"W10",w:"boss",s:"My ___ is very kind.",c:"我的老闆人很好。" },
+    { g:"5上",wk:"W10",w:"bowl",s:"Put the rice in the ___.",c:"把飯放進碗裡。" },
+    { g:"5上",wk:"W10",w:"busy",s:"I am very ___ today.",c:"我今天非常忙。" },
+    { g:"5上",wk:"W10",w:"cake",s:"She made a birthday ___.",c:"她做了一個生日蛋糕。" },
+    { g:"5上",wk:"W10",w:"card",s:"I sent her a birthday ___.",c:"我寄給她一張生日卡片。" },
+    { g:"5上",wk:"W10",w:"but",s:"I like tea, ___ not coffee.",c:"我喜歡茶，但不喜歡咖啡。" },
+    { g:"5上",wk:"W10",w:"buy",s:"Let's ___ some fruit.",c:"我們去買些水果吧。" },
+    { g:"5上",wk:"W10",w:"can",s:"I ___ swim very well.",c:"我很會游泳。" },
+    { g:"5上",wk:"W11",w:"city",s:"Taipei is a big ___.",c:"台北是一座大城市。" },
+    { g:"5上",wk:"W11",w:"coat",s:"Wear your ___, it's cold.",c:"穿上你的大衣，天氣很冷。" },
+    { g:"5上",wk:"W11",w:"cold",s:"It is very ___ today.",c:"今天非常冷。" },
+    { g:"5上",wk:"W11",w:"come",s:"Please ___ to my party.",c:"請來參加我的派對。" },
+    { g:"5上",wk:"W11",w:"cook",s:"My mom likes to ___ dinner.",c:"我媽媽喜歡煮晚餐。" },
+    { g:"5上",wk:"W11",w:"cap",s:"He is wearing a red ___.",c:"他戴著一頂紅色棒球帽。" },
+    { g:"5上",wk:"W11",w:"car",s:"We go there by ___.",c:"我們開車去那裡。" },
+    { g:"5上",wk:"W11",w:"cut",s:"Please ___ the paper here.",c:"請在這裡把紙剪開。" },
+    { g:"5上",wk:"W12",w:"cool",s:"It's ___ in the morning.",c:"早上天氣很涼爽。" },
+    { g:"5上",wk:"W12",w:"copy",s:"Please ___ this page for me.",c:"請幫我影印這一頁。" },
+    { g:"5上",wk:"W12",w:"cute",s:"The puppy is so ___.",c:"這隻小狗好可愛喔。" },
+    { g:"5上",wk:"W12",w:"dark",s:"The room is very ___.",c:"這房間很黑暗。" },
+    { g:"5上",wk:"W12",w:"date",s:"What is today's ___?",c:"今天的日期是幾號？" },
+    { g:"5上",wk:"W12",w:"do",s:"What do you ___ every day?",c:"你每天都做什麼？" },
+    { g:"5上",wk:"W12",w:"day",s:"Today is a happy ___.",c:"今天是快樂的一天。" },
+    { g:"5上",wk:"W12",w:"die",s:"Plants ___ without water.",c:"植物沒有水會死亡。" },
+    { g:"5上",wk:"W13",w:"desk",s:"My books are on the ___.",c:"我的書在書桌上。" },
+    { g:"5上",wk:"W13",w:"dish",s:"Please wash the ___.",c:"請把盤子洗一洗。" },
+    { g:"5上",wk:"W13",w:"doll",s:"She has a pretty ___.",c:"她有一個漂亮的洋娃娃。" },
+    { g:"5上",wk:"W13",w:"door",s:"Please close the ___.",c:"請把門關上。" },
+    { g:"5上",wk:"W13",w:"ear (s)",s:"My ___ hurt.",c:"我的耳朵很痛。" },
+    { g:"5上",wk:"W13",w:"dig",s:"The dog likes to ___ holes.",c:"那隻狗喜歡挖洞。" },
+    { g:"5上",wk:"W13",w:"dot",s:"There is a ___ on the paper.",c:"紙上有一個點。" },
+    { g:"5上",wk:"W13",w:"egg",s:"I eat an ___ every morning.",c:"我每天早上吃一顆蛋。" },
+    { g:"5上",wk:"W14",w:"eye (s)",s:"She has big ___.",c:"她有一雙大眼睛。" },
+    { g:"5上",wk:"W14",w:"face",s:"Wash your ___ every morning.",c:"每天早上要洗臉。" },
+    { g:"5上",wk:"W14",w:"fast",s:"He can run very ___.",c:"他跑得很快。" },
+    { g:"5上",wk:"W14",w:"feel",s:"How do you ___ today?",c:"你今天感覺如何？" },
+    { g:"5上",wk:"W14",w:"fish",s:"We caught a big ___.",c:"我們抓到一條大魚。" },
+    { g:"5上",wk:"W14",w:"end",s:"The story has a happy ___.",c:"這個故事有一個快樂的結局。" },
+    { g:"5上",wk:"W14",w:"eve",s:"We meet on Christmas ___.",c:"我們在聖誕夜見面。" },
+    { g:"5上",wk:"W14",w:"far",s:"My school is ___ from here.",c:"我的學校離這裡很遠。" },
+    { g:"5上",wk:"W15",w:"five",s:"I have ___ pencils.",c:"我有五枝鉛筆。" },
+    { g:"5上",wk:"W15",w:"food",s:"The ___ here is delicious.",c:"這裡的食物很好吃。" },
+    { g:"5上",wk:"W15",w:"fork",s:"Please use a ___ to eat.",c:"請用叉子吃。" },
+    { g:"5上",wk:"W15",w:"four",s:"There are ___ chairs here.",c:"這裡有四張椅子。" },
+    { g:"5上",wk:"W15",w:"gift",s:"Thank you for the ___.",c:"謝謝你的禮物。" },
+    { g:"5上",wk:"W15",w:"fat",s:"The cat is a little ___.",c:"這隻貓有點胖。" },
+    { g:"5上",wk:"W15",w:"few",s:"I have a ___ friends here.",c:"我在這裡有幾個朋友。" },
+    { g:"5上",wk:"W15",w:"fix",s:"Can you ___ my bike?",c:"你能修理我的腳踏車嗎？" },
+    { g:"5上",wk:"W16",w:"goat",s:"The ___ eats grass.",c:"山羊吃草。" },
+    { g:"5上",wk:"W16",w:"gray",s:"She wears a ___ jacket.",c:"她穿著一件灰色外套。" },
+    { g:"5上",wk:"W16",w:"head",s:"My ___ hurts.",c:"我的頭很痛。" },
+    { g:"5上",wk:"W16",w:"help",s:"Can you ___ me, please?",c:"你可以幫我嗎？" },
+    { g:"5上",wk:"W16",w:"hurt",s:"My leg is ___.",c:"我的腿受傷了。" },
+    { g:"5上",wk:"W16",w:"fly",s:"Birds can ___ high in the sky.",c:"鳥兒能在天空高飛。" },
+    { g:"5上",wk:"W16",w:"fog",s:"There is ___ this morning.",c:"今天早上有霧。" },
+    { g:"5上",wk:"W16",w:"fox",s:"A ___ ran into the woods.",c:"一隻狐狸跑進了樹林。" },
+    { g:"5上",wk:"W17",w:"kick",s:"Don't ___ the ball at people.",c:"不要對著人踢球。" },
+    { g:"5上",wk:"W17",w:"knee",s:"I hurt my ___.",c:"我的膝蓋受傷了。" },
+    { g:"5上",wk:"W17",w:"kite",s:"We fly a ___ in the park.",c:"我們在公園放風箏。" },
+    { g:"5上",wk:"W17",w:"lake",s:"We swim in the ___.",c:"我們在湖裡游泳。" },
+    { g:"5上",wk:"W17",w:"late",s:"Don't be ___ for school.",c:"上學不要遲到。" },
+    { g:"5上",wk:"W17",w:"fry",s:"We ___ eggs for breakfast.",c:"我們早餐油炸雞蛋。" },
+    { g:"5上",wk:"W17",w:"fun",s:"We had a lot of ___.",c:"我們玩得很開心。" },
+    { g:"5上",wk:"W17",w:"gas",s:"The car needs more ___.",c:"這輛車需要加更多瓦斯（油）。" },
+    { g:"5上",wk:"W18",w:"like",s:"I ___ ice cream.",c:"我喜歡冰淇淋。" },
+    { g:"5上",wk:"W18",w:"lion",s:"The ___ is the king of the jungle.",c:"獅子是叢林之王。" },
+    { g:"5上",wk:"W18",w:"lazy",s:"Don't be ___, do your homework.",c:"別偷懶，去寫作業。" },
+    { g:"5上",wk:"W18",w:"left",s:"Turn ___ at the corner.",c:"在轉角處左轉。" },
+    { g:"5上",wk:"W18",w:"many",s:"There are ___ books here.",c:"這裡有許多書。" },
+    { g:"5上",wk:"W18",w:"get",s:"Let's ___ some water.",c:"我們去拿一些水吧。" },
+    { g:"5上",wk:"W18",w:"God",s:"They pray to ___.",c:"他們向上帝祈禱。" },
+    { g:"5上",wk:"W18",w:"guy",s:"He is a nice ___.",c:"他是個不錯的傢伙。" },
+    { g:"5上",wk:"W19",w:"math",s:"I like ___ class.",c:"我喜歡數學課。" },
+    { g:"5上",wk:"W19",w:"milk",s:"I drink ___ every day.",c:"我每天喝牛奶。" },
+    { g:"5上",wk:"W19",w:"menu",s:"Can I see the ___?",c:"我可以看菜單嗎？" },
+    { g:"5上",wk:"W19",w:"neck",s:"She wears a scarf around her ___.",c:"她的脖子上圍著圍巾。" },
+    { g:"5上",wk:"W19",w:"name",s:"What is your ___?",c:"你的名字是什麼？" },
+    { g:"5上",wk:"W19",w:"gym",s:"We play basketball in the ___.",c:"我們在體育館打籃球。" },
+    { g:"5上",wk:"W19",w:"gun",s:"The police officer carries a ___.",c:"那位警察帶著槍。" },
+    { g:"5上",wk:"W19",w:"he",s:"___ is my best friend.",c:"他是我最好的朋友。" },
+    { g:"5上",wk:"W20",w:"nose",s:"My ___ is red.",c:"我的鼻子紅紅的。" },
+    { g:"5上",wk:"W20",w:"open",s:"Please ___ the window.",c:"請打開窗戶。" },
+    { g:"5上",wk:"W20",w:"page",s:"Turn to ___ ten.",c:"翻到第十頁。" },
+    { g:"5上",wk:"W20",w:"pork",s:"We eat ___ for dinner.",c:"我們晚餐吃豬肉。" },
+    { g:"5上",wk:"W20",w:"pull",s:"Please ___ the door.",c:"請拉開這扇門。" },
+    { g:"5上",wk:"W20",w:"ham",s:"I want a ___ sandwich.",c:"我想要一個火腿三明治。" },
+    { g:"5上",wk:"W20",w:"hat",s:"She wears a pink ___.",c:"她戴著一頂粉紅色帽子。" },
+    { g:"5上",wk:"W20",w:"hen",s:"The ___ lays eggs.",c:"母雞會下蛋。" },
+    { g:"5上",wk:"W21",w:"push",s:"Please ___ the door open.",c:"請把門推開。" },
+    { g:"5上",wk:"W21",w:"park",s:"We play in the ___.",c:"我們在公園玩。" },
+    { g:"5上",wk:"W21",w:"pink",s:"I like the ___ flower.",c:"我喜歡那朵粉紅色的花。" },
+    { g:"5上",wk:"W21",w:"play",s:"Let's ___ together.",c:"我們一起玩吧。" },
+    { g:"5上",wk:"W21",w:"quiz",s:"We have an English ___ today.",c:"我們今天有英文小考。" },
+    { g:"5上",wk:"W21",w:"hey",s:"___, look at this!",c:"嘿，看看這個！" },
+    { g:"5上",wk:"W21",w:"hit",s:"Don't ___ your friends.",c:"不要打你的朋友。" },
+    { g:"5上",wk:"W21",w:"hop",s:"The rabbit can ___ very high.",c:"兔子可以跳得很高。" },
 ];
 
 // ======================================================
@@ -1767,30 +2090,70 @@ function nextQuestion() {
     }
 }
 
-function playAudio(type = 'word') {
+// ======================================================
+// 🔊 語音播放（修正 Android Chrome 常見 bug：
+//   1) cancel() 後立刻 speak() 容易被吃掉聲音 → 加極短延遲
+//   2) 語音講太久會被 Chrome 自動暫停、變卡頓 → 加保持喚醒機制
+//   3) 連續快速點按發音鈕（如拼讀規則表的▶按鈕）會互相打斷 → 用 token 忽略過期回呼
+// ======================================================
+let _speechKeepAliveTimer = null;
+let _speechToken = 0;
+
+function _clearSpeechKeepAlive() {
+    if (_speechKeepAliveTimer) {
+        clearInterval(_speechKeepAliveTimer);
+        _speechKeepAliveTimer = null;
+    }
+}
+
+function speakText(text, rate) {
+    const myToken = ++_speechToken;
     window.speechSynthesis.cancel();
+    _clearSpeechKeepAlive();
+    // 短延遲讓 cancel() 真正生效後才發出新的 speak()，避免 Chrome 吃掉聲音
+    setTimeout(() => {
+        if (myToken !== _speechToken) return; // 使用者已經點了下一個，放棄這個過期請求
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.lang = 'en-US';
+        msg.rate = rate;
+        msg.onstart = () => {
+            if (myToken !== _speechToken) return;
+            // Android/Chrome 長句會自動卡住，每 4 秒 pause+resume 一次保持喚醒
+            _speechKeepAliveTimer = setInterval(() => {
+                if (window.speechSynthesis.speaking) {
+                    window.speechSynthesis.pause();
+                    window.speechSynthesis.resume();
+                } else {
+                    _clearSpeechKeepAlive();
+                }
+            }, 4000);
+        };
+        msg.onend = _clearSpeechKeepAlive;
+        msg.onerror = _clearSpeechKeepAlive;
+        window.speechSynthesis.speak(msg);
+    }, 60);
+}
+
+function playAudio(type = 'word') {
     const current = currentData[currentIndex];
     let text = type === 'word' ? current.w
         : (current.s.includes("___") ? current.s.replace("___", current.w) : current.s);
     const speed = parseFloat(document.getElementById("audio-speed").value);
-    const msg = new SpeechSynthesisUtterance(text);
-    msg.lang = 'en-US'; msg.rate = speed;
-    window.speechSynthesis.speak(msg);
+    speakText(text, speed);
 }
 
 function speak(text, rate = 0.85) {
-    window.speechSynthesis.cancel();
-    const msg = new SpeechSynthesisUtterance(text);
-    msg.lang = 'en-US'; msg.rate = rate;
-    window.speechSynthesis.speak(msg);
+    speakText(text, rate);
 }
 
 function playCompare(words) {
+    _speechToken++; // 讓任何進行中的舊語音立即失效
     window.speechSynthesis.cancel();
-    let delay = 0;
+    _clearSpeechKeepAlive();
+    let delay = 100;
     words.forEach(w => {
-        setTimeout(() => { speak(w, 0.75); }, delay);
-        delay += 1200;
+        setTimeout(() => { speakText(w, 0.75); }, delay);
+        delay += 1300;
     });
 }
 
@@ -1923,7 +2286,7 @@ window.onload = init;
 // ===== Service Worker 註冊 =====
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
+    navigator.serviceWorker.register('./sw.js')
       .then(reg => console.log('[PWA] Service Worker 已註冊'))
       .catch(err => console.log('[PWA] 註冊失敗：', err));
   });

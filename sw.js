@@ -2,15 +2,15 @@
 // sw.js - Service Worker（Network First 策略）
 // 更新版本號：每次修改網頁內容時，請更新此號碼
 // =============================================
-const CACHE_VERSION = 'v1.2.2';
+const CACHE_VERSION = 'v1.3.0';
 const CACHE_NAME = `spelling-game-${CACHE_VERSION}`;
 
 // 需要快取的檔案清單
 const FILES_TO_CACHE = [
-  '/index.html',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png'
+  './index.html',
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png'
 ];
 
 // ===== 安裝 =====
